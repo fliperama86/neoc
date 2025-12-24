@@ -1,0 +1,121 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/install/${presetName}"
+        },
+        {
+            "name": "debug",
+            "inherits": "base",
+            "displayName": "Debug",
+            "description": "Debug build with sanitizers",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "NEOC_ENABLE_SANITIZERS": "ON",
+                "NEOC_ENABLE_LTO": "OFF"
+            }
+        },
+        {
+            "name": "release",
+            "inherits": "base",
+            "displayName": "Release",
+            "description": "Optimized release build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "NEOC_ENABLE_SANITIZERS": "OFF",
+                "NEOC_ENABLE_LTO": "ON"
+            }
+        },
+        {
+            "name": "relwithdebinfo",
+            "inherits": "base",
+            "displayName": "Release with Debug Info",
+            "description": "Release build with debug symbols",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "NEOC_ENABLE_LTO": "ON"
+            }
+        },
+        {
+            "name": "windows-msvc",
+            "inherits": "release",
+            "displayName": "Windows (MSVC)",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
+            "generator": "Visual Studio 17 2022",
+            "architecture": "x64"
+        },
+        {
+            "name": "windows-clang",
+            "inherits": "release",
+            "displayName": "Windows (Clang)",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang"
+            }
+        },
+        {
+            "name": "macos",
+            "inherits": "release",
+            "displayName": "macOS",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            },
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang"
+            }
+        },
+        {
+            "name": "linux",
+            "inherits": "release",
+            "displayName": "Linux",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            },
+            "generator": "Ninja"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "debug",
+            "configurePreset": "debug"
+        },
+        {
+            "name": "release",
+            "configurePreset": "release"
+        },
+        {
+            "name": "macos",
+            "configurePreset": "macos"
+        },
+        {
+            "name": "linux",
+            "configurePreset": "linux"
+        },
+        {
+            "name": "windows-msvc",
+            "configurePreset": "windows-msvc"
+        }
+    ]
+}

@@ -131,16 +131,16 @@ uint16_t video_read_palette(neoc_video_t *video, uint16_t addr) {
 /* Convert NeoGeo RGB color to RGBA8888 */
 static uint32_t color_to_rgba(uint16_t color) {
     /* NeoGeo color format: xBBBBBGGGGGRRRRR (dark bit in MSB) */
-    int r = (color & 0x0F) | ((color >> 10) & 0x10);
-    int g = ((color >> 4) & 0x0F) | ((color >> 11) & 0x10);
-    int b = ((color >> 8) & 0x0F) | ((color >> 12) & 0x10);
+    uint32_t r = (color & 0x0Fu) | ((color >> 10) & 0x10u);
+    uint32_t g = ((color >> 4) & 0x0Fu) | ((color >> 11) & 0x10u);
+    uint32_t b = ((color >> 8) & 0x0Fu) | ((color >> 12) & 0x10u);
 
     /* Scale 5-bit to 8-bit */
     r = (r << 3) | (r >> 2);
     g = (g << 3) | (g >> 2);
     b = (b << 3) | (b >> 2);
 
-    return (0xFF << 24) | (b << 16) | (g << 8) | r;
+    return (0xFFu << 24) | (b << 16) | (g << 8) | r;
 }
 
 void video_render_scanline(neoc_video_t *video, int line) {

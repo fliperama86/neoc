@@ -105,7 +105,7 @@ void neoc_run_frame(neoc_t *emu) {
         m68k_execute(emu->m68k, cycles_per_line);
 
         /* Run Z80 (proportionally fewer cycles) */
-        int z80_cycles = (cycles_per_line * NEOC_Z80_CLOCK) / NEOC_M68K_CLOCK;
+        int z80_cycles = (int)(((int64_t)cycles_per_line * NEOC_Z80_CLOCK) / NEOC_M68K_CLOCK);
         z80_execute(emu->z80, z80_cycles);
 
         /* Render visible scanlines */

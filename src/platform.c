@@ -4,7 +4,11 @@
 #include "platform.h"
 
 #ifdef NEOC_USE_SDL
+#ifdef __APPLE__
+#include <SDL.h>
+#else
 #include <SDL2/SDL.h>
+#endif
 
 struct neoc_platform {
     SDL_Window *window;

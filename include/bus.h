@@ -1,6 +1,5 @@
 #include <stdbool.h>
 #include <stdint.h>
-#include <stdio.h>
 
 uint8_t read8(uint32_t addr);
 void write8(uint32_t addr, uint8_t data);

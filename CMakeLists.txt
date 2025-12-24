@@ -19,6 +19,7 @@ option(NEOC_USE_SDL "Use SDL2 for platform abstraction" ON)
 set(SOURCES
     src/main.c
     src/bus.c
+    src/neoc.c
 )
 
 # Include directories

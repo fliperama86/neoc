@@ -18,14 +18,7 @@ option(NEOC_USE_SDL "Use SDL2 for platform abstraction" ON)
 # Source files
 set(SOURCES
     src/main.c
-    src/neoc.c
-    src/m68k.c
-    src/z80.c
-    src/ym2610.c
-    src/video.c
-    src/memory.c
-    src/input.c
-    src/platform.c
+    src/bus.c
 )
 
 # Include directories
@@ -120,7 +113,7 @@ endif()
 
 # Generate version header
 configure_file(
-    ${CMAKE_SOURCE_DIR}/include/version.h.in
+    ${CMAKE_SOURCE_DIR}/include/claude/version.h.in
     ${CMAKE_BINARY_DIR}/include/version.h
 )
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_BINARY_DIR}/include)

@@ -107,6 +107,9 @@ build() {
     cmake "${cmake_args[@]}"
     cmake --build "$build_dir" --parallel "$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)"
 
+    # Update symlink for IDE support
+    ln -sf "${build_dir}/compile_commands.json" "${PROJECT_DIR}/compile_commands.json"
+
     info "Build complete: ${build_dir}/neoc"
 }
 

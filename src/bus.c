@@ -1,6 +1,9 @@
 #include "bus.h"
 
-uint8_t read8(uint32_t addr) { return 0; }
+uint8_t read8(uint32_t addr) {
+  (void)addr;
+  return 0;
+}
 
 void write8(uint32_t addr, uint8_t data) {
   (void)addr;

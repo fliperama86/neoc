@@ -29,3 +29,4 @@ bios/
 # Debug
 *.dSYM/
 core
+.obsidian/

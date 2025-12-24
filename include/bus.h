@@ -1,0 +1,12 @@
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+
+uint8_t read8(uint32_t addr);
+void write8(uint32_t addr, uint8_t data);
+
+uint16_t read16(uint32_t addr);
+void write16(uint32_t addr, uint16_t data);
+
+uint32_t read32(uint32_t addr);
+void write32(uint32_t addr, uint32_t data);

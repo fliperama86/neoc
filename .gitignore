@@ -29,4 +29,7 @@ bios/
 # Debug
 *.dSYM/
 core
+
+# Environment
 .obsidian/
+.cache/

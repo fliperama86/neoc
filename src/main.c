@@ -2,14 +2,13 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "bus.h"
-#include "m68k.h"
+#include "neoc.h"
 
 int main() {
-  m68k_cpu_t *cpu = m68k_create();
-  m68k_reset(cpu);
+  neoc_t *emu = neoc_create();
+  neoc_reset(emu);
   printf("Hello, World!\n");
-  m68k_destroy(cpu);
+  neoc_destroy(emu);
 
   return 0;
 }

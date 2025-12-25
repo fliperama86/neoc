@@ -20,6 +20,7 @@ set(SOURCES
     src/main.c
     src/bus.c
     src/neoc.c
+    src/m68k.c
 )
 
 # Include directories
@@ -112,9 +113,8 @@ if(NEOC_ENABLE_LTO)
     endif()
 endif()
 
-# Generate version header
 configure_file(
-    ${CMAKE_SOURCE_DIR}/include/claude/version.h.in
+    ${CMAKE_SOURCE_DIR}/include/version.h.in
     ${CMAKE_BINARY_DIR}/include/version.h
 )
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_BINARY_DIR}/include)
